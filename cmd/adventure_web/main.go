@@ -1,11 +1,11 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
-	myStory "udvari/adventure"
+
+	myStory "github.com/adventure"
 )
 
 func main() {
@@ -19,9 +19,8 @@ func main() {
 		panic(err)
 	}
 
-	d := json.NewDecoder(f)
-	var story myStory.Story
-	if err := d.Decode(&story); err != nil {
+	story, err := myStory.JsonStory(f)
+	if err != nil {
 		panic(err)
 	}
 
