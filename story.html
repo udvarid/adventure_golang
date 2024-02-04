@@ -1,0 +1,17 @@
+<h1>{{.Title}}</h1>
+
+<body>
+    <ul>
+        {{range .Paragraphs}}
+            <p>{{.}}</p>
+        {{end}}
+    </ul>
+
+    <ul>
+        {{range .Options}}
+            <p><a href="/story/{{.Chapter}}">{{.Text}}</a></p>
+        {{end}}
+    </ul>
+
+</body>
+
