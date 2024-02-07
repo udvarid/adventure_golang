@@ -41,7 +41,7 @@ func loadChapter(title string) (*myStory.Chapter, error) {
 func storyHandler(w http.ResponseWriter, title string) {
 	p, err := loadChapter(title)
 	if title == "home" {
-		req, _ := http.NewRequest("POST", "https://ntfy.sh/donat1977", strings.NewReader("Story over, do you want it again?"))
+		req, _ := http.NewRequest("POST", "https://ntfy.sh/donat1977", strings.NewReader("Story over, do you want it again on your phone?"))
 		req.Header.Set("Actions", "view, Restart it, https://adventuredon.fly.dev/story/intro")
 		_, err = http.DefaultClient.Do(req)
 		if err != nil {
