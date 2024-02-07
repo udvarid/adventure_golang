@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"strings"
 
 	myStory "github.com/udvarid/adventure/story"
 )
@@ -39,6 +40,15 @@ func loadChapter(title string) (*myStory.Chapter, error) {
 
 func storyHandler(w http.ResponseWriter, title string) {
 	p, err := loadChapter(title)
+	if title == "home" {
+		req, _ := http.NewRequest("POST", "https://ntfy.sh/donat1977", strings.NewReader("Story over, do you want it again?"))
+		req.Header.Set("Actions", "view, Restart it, https://adventuredon.fly.dev/story/intro")
+		_, err = http.DefaultClient.Do(req)
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+
+	}
 	if err != nil {
 		return
 	}
